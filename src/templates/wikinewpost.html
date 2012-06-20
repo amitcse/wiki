@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="/static/main.css" />
+  <title>Edit Post</title>
+</head>
+
+<!-- 
+<style type="text/css">
+	    body{
+		    	position: relative;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                color: #333;
+                width: 800px;
+                margin: 0 auto;
+                padding: 10px;
+		}
+
+		.login-area {
+                font-size: 18px;
+                color: gray;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+
+            .login-link {
+                color: gray;
+                text-decoration: none;
+            }
+
+            .login-link:visited {
+                color: gray;
+            }
+
+            .login-link:hover {
+                text-decoration: underline;
+                color : black;
+            }
+
+		#content{
+                position:relative;
+                top: 40px;
+            }
+
+		.home-area{
+                font-size: 26px;
+                position: absolute;
+                top: 60px;
+                right: 410px;
+            }
+            
+        .home-link {
+                color: blue;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        .home-link:hover {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+         .user{
+        	margin: 10px auto;
+        	font-size:17px;
+        	color:gray;
+        }
+
+        .main-title {
+                display: block;
+                color: #222;
+                font-size: 40px;
+                font-weight: bold;
+                right: 100px;
+                margin-bottom: 0px;
+                text-decoration: none;
+            }
+		
+		label{
+		    display:block;
+            font-weight: bold;
+			font-size:20px;
+		}
+		
+		input[type=text]{
+		    width : 400px;
+			font-size : 20 px;
+			padding :2 px;
+		}
+		
+		textarea{
+		    font-family:monospace;
+			width : 400px;
+			height : 400px;
+			font-size : 17 px;
+		}
+		
+		input[type=submit]{
+			font-size : 78 px;
+            font-weight: bold;
+            width : 100px;
+			height : 30px;
+		}
+		
+		hr{
+		    margin:20px auto;
+		}
+		
+		.art + .art{
+		    margin-top: 20 px;
+		}
+		
+		.post-subject{
+		    font-weight: bold;
+		    font-size : 20 px;
+		}
+		
+		.post-content{
+		    font-size : 17 px;
+			margin: 0;
+		}
+            
+        .sub{
+            margin : 10px auto;
+			padding : 10 px;
+        }
+        
+        .con{
+            margin : 10px auto;
+			padding : 10 px;
+        }
+
+	</style>   -->
+
+<body>
+  <a href="/" class="main-title">
+    amit-Wiki
+  </a>
+
+  <div class="login-area">
+        {% if logged_in %}
+            {{username}}
+            |
+            <a class="login-link" href="/logout">logout</a>
+        {% endif %}
+        {% if not logged_in %}
+            <a class="login-link" href="/login">login</a>
+            |
+            <a class="login-link" href="/signup">signup</a>
+        {% endif %}
+   </div>
+   
+   </div>
+		<div id="content">
+			<form method="post">
+			<label>
+			    <div class="con">Content</div>
+				<textarea name="content">{{content}}</textarea>
+			</label>
+			
+			<div class"error" style="color: red">{{error}}</div>
+			
+			<input type="submit">
+			</form
+	</div>
+   
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <link type="text/css" rel="stylesheet" href="/static/main.css" />
+	    <title>History</title>
+	</head>
+<!-- 	<style type="text/css">
+	     body {
+                position: relative;
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                color: #333;
+                width: 800px;
+                margin: 0 auto;
+                padding: 10px;
+                
+            }
+
+            #content{
+                position:relative;
+                top: 80px;
+            }
+            
+            .newpost-area{
+                font-size: 30px;
+                position: absolute;
+                top: 100px;
+                right: 10px;
+            }
+            
+            .newpost-link {
+                color: blue;
+                font-weight: bold;
+                text-decoration: none;
+            }
+            .newpost-link:hover {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            .login-area {
+                font-size: 18px;
+                color: gray;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+
+            .login-link {
+                color: gray;
+                text-decoration: none;
+            }
+
+            .login-link:visited {
+                color: gray;
+            }
+
+            .login-link:hover {
+                text-decoration: underline;
+                color : black;
+            }
+
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .error {
+                color: red;
+            }
+
+            label {
+              display: block;
+              font-size: 20px;
+            }
+
+            label + label {
+                margin-top: 20px;
+            }
+
+            input[type=text] {
+                width: 500px;
+                font-size: 20px;
+                padding: 2px;
+                font-family: monospace;
+            }
+
+            textarea {
+              width: 500px;
+              height: 400px;
+              font-size: 17px;
+              font-family: monospace;
+            }
+
+            input[type=submit] {
+              font-size: 24px;
+            }
+
+            .main-title {
+                display: block;
+                color: #222;
+                font-size: 60px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 30px;
+                text-decoration: none;
+            }
+
+            .post + .post {
+                margin-top: 15px;
+            }
+
+            .post-heading {
+                position: relative;
+                border-bottom: 3px solid #666;
+            }
+
+            .post-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: blue;
+                text-decoration: none;
+            }
+
+            .post-title:hover {
+                font-size: 24px;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            .post-date {
+                font-size : 17px;
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                color: #999;
+
+            }
+
+            #post-creator{
+                font size: 20px;
+                color: gray;
+                display:block;
+                position: relative;
+                text-align:right;
+                bottom: 1px;
+            }
+
+            .post-content {
+                margin-top: 5px;
+                white-space: pre-wrap;
+            }
+	</style>   -->
+	
+	<body>
+	    <a href="/" class="main-title">
+            amit-Wiki
+        </a>
+        
+        <div class="login-area">
+        {% if logged_in %}
+            {{username}}
+            |
+            <a class="login-link" href="/logout">logout</a>
+        {% endif %}
+        {% if not logged_in %}
+            <a class="login-link" href="/login">login</a>
+            |
+            <a class="login-link" href="/signup">signup</a>
+        {% endif %}
+    
+  </div>
+        
+        <div id="content">
+		    {% for post in posts %}
+		    <div class="post"> 
+                <div class="post-heading">
+                    <div class="post-title">
+                        {{post.content}}
+                    </div>
+                    <div class="post-date">{{post.created.date().strftime("%a, %B %d, %Y")}}</div>
+                </div>
+                <div id = "post-creator">
+                    <a href="/_edit{{post.posttitle}}?pid={{post.key().id()}}"> edit</a>
+                    |
+                    <a href="{{post.posttitle}}?pid={{post.key().id()}}"> View </a>
+                </div>
+			</div>
+		{% endfor %}
+		 
+        </div>         
+		
+	</body>
+</html>
